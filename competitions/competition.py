@@ -7,10 +7,10 @@ class Competition:
         self.results = []  # almacena los resultados de las batallas
 
     def organize_battles(self):
-        raise NotImplementedError("Este método debe ser implementado por las subclases.")
+        raise NotImplementedError("este metodo debe ser implementado por las subclases.")
 
     def start(self, mode='auto'):
-        raise NotImplementedError("Este método debe ser implementado por las subclases.")
+        raise NotImplementedError("este metodo debe ser implementado por las subclases.")
 
     def add_result(self, battle_result):
         self.results.append(battle_result)

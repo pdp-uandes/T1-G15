@@ -9,6 +9,7 @@ class Attack:
         self.precision = precision
         self.recharge = recharge
         self.turns_until_ready = 0
+        self.usage_count = 0  # Contador de uso
 
     def is_ready(self):
         return self.turns_until_ready == 0
@@ -16,6 +17,7 @@ class Attack:
     def use(self):
         if self.is_ready():
             self.turns_until_ready = self.recharge
+            self.usage_count += 1  # Incrementar el contador de uso
             return self.damage
         else:
             return 0

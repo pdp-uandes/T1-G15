@@ -10,10 +10,12 @@ class Skill:
         self.effect = effect
         self.effect_value = effect_value
         self.active_turns = 0
+        self.activation_count = 0  # Contador de activaciones
 
     def activate(self, condition):
         if condition == self.trigger and self.active_turns == 0:
             self.active_turns = self.duration
+            self.activation_count += 1  # Incrementar el contador de activaciones
             return True
         return False
 
