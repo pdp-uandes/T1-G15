@@ -2,6 +2,7 @@
 import csv
 import matplotlib.pyplot as plt
 from collections import defaultdict
+from reports.visualizer import Visualizer
 
 class Report:
     def __init__(self, competition):
@@ -87,3 +88,18 @@ class Report:
             print(f"Resumen de batallas guardado en {filename}")
         except Exception as e:
             print(f"Error al generar el resumen de batallas: {e}")
+            
+    def generate_attack_usage_bar_chart(self, filename='attack_usage.png'):
+        attack_usage = defaultdict(int)
+        for robot in self.competition.robots:
+            for attack in robot.attacks:
+                attack_usage[attack.name] += attack.usage_count
+
+        Visualizer.plot_bar_chart(
+            data=attack_usage,
+            title='Uso de ataques durante la competición',
+            xlabel='Ataques',
+            ylabel='Cantidad de usos',
+            filename=filename
+        )
+
